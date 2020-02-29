@@ -7,3 +7,13 @@
 */*.project
 *.iml
 *.idea
+
+/target/
+
+/.classpath
+/.project
+/.settings/
+
+/out
+/.idea
+/**/*.iml
