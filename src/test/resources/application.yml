@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: optimistic-lock
+  profiles:
+    active: dev
+    include: data-source
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    accesslog:
+      enabled: true
+      buffered: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log

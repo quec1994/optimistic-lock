@@ -1,6 +1,6 @@
-package com.vi.test.mapper;
+package com.quec1994.mapper.user;
 
-import com.vi.test.entity.UserDefault;
+import com.quec1994.entity.UserDefault;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;

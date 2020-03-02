@@ -1,32 +1,27 @@
-package com.vi.test.test;
+package com.quec1994.test;
 
-import com.vi.test.entity.UserDefault;
-import com.vi.test.mapper.UserDefaultMapper;
+import com.quec1994.entity.UserDefault;
+import com.quec1994.mapper.user.UserDefaultMapper;
 import org.apache.ibatis.binding.BindingException;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserDefaultMapperTest {
 
-    private static SqlSession sqlSession = null;
+    @Autowired
+    private UserDefaultMapper userDefaultMapper;
     private UserDefault user = new UserDefault();
-    private static UserDefaultMapper userDefaultMapper;
-
-    @BeforeClass
-    public static void doInitTest() throws Exception {
-        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        sqlSession = sqlSessionFactory.openSession(true);
-        userDefaultMapper = sqlSession.getMapper(UserDefaultMapper.class);
-
-    }
 
     //初始化数据
     @Before
@@ -50,8 +45,6 @@ public class UserDefaultMapperTest {
         user.setPassword("654321");
         Integer result = userDefaultMapper.updateUser(user);
         Assert.assertEquals(1L, Long.parseLong(result + ""));
-
-//
     }
 
     @Test
@@ -71,12 +64,11 @@ public class UserDefaultMapperTest {
         Assert.assertEquals(1L, Long.parseLong(result + ""));
     }
 
-	@Test(expected = BindingException.class)
-	public void updateUserErrorTest() {
-		Integer result = userDefaultMapper.updateUserError("test", "test", 100L, 1);
-		Assert.assertEquals(1L, Long.parseLong(result + ""));
-	}
-
+    @Test(expected = BindingException.class)
+    public void updateUserErrorTest() {
+        Integer result = userDefaultMapper.updateUserError("test", "test", 100L, 1);
+        Assert.assertEquals(1L, Long.parseLong(result + ""));
+    }
 
 
 }

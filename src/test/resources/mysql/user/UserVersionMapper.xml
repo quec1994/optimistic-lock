@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.vi.test.mapper.UserVersionMapper">
+<mapper namespace="com.quec1994.mapper.user.UserVersionMapper">
 	
 	<!-- 这里的三个方法是模拟MyBatis Generator插件自动创建的代码，相当有参考价值 -->
 	
-	<update id="updateUser" parameterType="com.vi.test.entity.UserVersion">
+	<update id="updateUser" parameterType="com.quec1994.entity.UserVersion">
 		update user_version set name = #{name}, password = #{password} where id = #{id}
 	</update>
 	
-	<update id="updateUserErr">
+	<update id="updateUserError">
 		update user_version set name = #{name}, password = #{password}, my_version = #{myVersion} where id = #{id}
 	</update>
 	
@@ -18,7 +18,7 @@
 		delete from user_version where id = #{id}
 	</delete>
 	
-	<insert id="initData" parameterType="com.vi.test.entity.UserVersion">
+	<insert id="initData" parameterType="com.quec1994.entity.UserVersion">
 		insert into user_version(id, name, password, my_version)values(#{id}, #{name}, #{password}, #{myVersion})
 	</insert>
 	

@@ -1,4 +1,4 @@
-package com.vi.test.entity;
+package com.quec1994.entity;
 
 import java.io.Serializable;
 

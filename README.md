@@ -9,38 +9,25 @@
 	
 ----------
 
-	描述：本插件主要是为了给Update语句自动生成带有version的乐观锁。
+	描述：本插件主要是为了给Update、Delete语句自动生成带有version的乐观锁。
 
 ----------
-### 1. 使用方式：在mybatis配置文件中加入如下配置，就完成了。 ###
-	<plugins>
-		<plugin interceptor="com.chrhc.mybatis.locker.interceptor.OptimisticLocker"/>
-	</plugins>
+### 1. 使用方式：在mybatis配置中加入如下配置，就完成了。 ###
+	参照 com.quec1994.config.DataConfiguration
 
-----------
-
-### 2. 对插件配置的说明： ###
-	
-上面对插件的配置默认数据库的乐观锁列对应的Java属性为version。这里可以自定义属性命，例如：
-
-	<plugins>
-		<plugin interceptor="com.chrhc.mybatis.locker.interceptor.OptimisticLocker">
-			<property name="versionColumn" value="xxx"/><!--数据库的列名-->
-			<property name="versionField" value="xxx"/> <!--java字段名-->
-		</plugin>
-	</plugins>
-
-----------
-
-### 3. 效果： ###
+### 2. 效果： ###
 > 之前：**update userDefault set name = ?, password = ?  where id = ?**
 
 > 之后：**update userDefault set name = ?, password = ?, version = version+1 where id = ? and version = ?**
 
+> 之前：**delete from userDefault where id = ?**
+
+> 之后：**delete from userDefault where id = ? and version = ?**
+
 ----------
 
 
-### 4. 对version的值的说明： ###
+### 3. 对version的值的说明： ###
 	1、当PreparedStatement获取到version值之后，插件内部会自动自增1。
 	2、乐观锁的整个控制过程对用户而言是透明的，这和Hibernate的乐观锁很相似，用户不需要关心乐观锁的值。
 

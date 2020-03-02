@@ -1,0 +1,13 @@
+db:
+  mysql:
+    jdbcUrl: jdbc:mysql://192.168.195.128:3306/demo?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true
+    username: quec1994
+    password: quec1994
+    driverClassName: com.mysql.jdbc.Driver
+    connectionTestQuery: SELECT 1 FROM DUAL
+    connectionTimeoutMs: 30000
+    idleTimeoutMs: 600000
+    maxLifetimeMs: 1800000
+    maxPoolSize: 20
+    minIdle: 1
+    transactionTimeoutS: 30

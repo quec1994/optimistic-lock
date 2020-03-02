@@ -1,0 +1,14 @@
+# 开发环境个性化配置
+
+server:
+  # 修改tomcat的访问端口号位8888，默认为8080
+  port: 8888
+
+# 日志
+logging:
+  path: ${user.dir}\target\logs
+  level:
+    root: info
+
+
+
